@@ -16,7 +16,7 @@ public class LRU <K,V> {
 
     public LRU(int size){
         this.capacity = size;
-        this.nodes = new HashMap<K, Node>(size);
+        this.nodes = new HashMap(size);
     }
 
     /**
@@ -28,7 +28,6 @@ public class LRU <K,V> {
         Node node = nodes.get(key);
         if (node == null){
             if (nodes.size() >= capacity){
-                nodes.remove(last.key);
                 removeLast();
             }
             node = new Node(key, value);
@@ -66,6 +65,7 @@ public class LRU <K,V> {
      * 移除最后一个节点
      */
     public void removeLast(){
+        nodes.remove(last.key);
         if(last == null){
             return;
         }
