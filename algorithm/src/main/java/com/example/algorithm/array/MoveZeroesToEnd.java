@@ -12,18 +12,29 @@ package com.example.algorithm.array;
  * @Modified By
  */
 public class MoveZeroesToEnd {
-    public static void main(int[] nums){
-//        int len = nums.length - 1;
-//        int last = len;
-//        for(int i = len; i >= 0; i--){
-//            if(nums[i] == 0){
-//                for(int j = i; j < len; j++){
-//                    nums[j] = nums[j+1];
-//                }
-//                nums[last] = 0;
-//                last = last - 1;
-//            }
-//        }
+    /**
+     * 从后往前数0，移动后面的数组
+     * @param nums
+     */
+    public void moveZero(int[] nums) {
+        int len = nums.length - 1;
+        int last = len;
+        for(int i = len; i >= 0; i--){
+            if(nums[i] == 0){
+                for(int j = i; j < len; j++){
+                    nums[j] = nums[j+1];
+                }
+                nums[last] = 0;
+                last = last - 1;
+            }
+        }
+    }
+
+    /**
+     * 从前往后数0，遇0累加，非0数字往前挪0的累加值位
+     * @param nums
+     */
+    public void moveZeroes(int[] nums) {
         int count = 0;
         int len = nums.length;
         for(int i = 0;  i < len ; i++){
