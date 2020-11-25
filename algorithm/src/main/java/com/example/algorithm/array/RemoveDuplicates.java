@@ -14,6 +14,14 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class RemoveDuplicates {
+    /**
+     * 161 / 161 个通过测试用例
+     * 状态：通过
+     * 执行用时: 1 ms
+     * 内存消耗: 40.4 MB
+     * @param nums
+     * @return
+     */
     public int deduplicationSimple(int[] nums) {
         if(nums.length == 0){
             return 0;
@@ -30,5 +38,28 @@ public class RemoveDuplicates {
         }
         return i+1;
     }
+
+    /**
+     * 执行用时：0 ms
+     * 内存消耗：40.5 MB
+     * @param nums
+     * @return
+     */
+    public int deduplicationBetter(int[] nums) {
+        if(nums.length == 0){
+            return 0;
+        }
+        int i = 0;
+        for(int j = 1; j < nums.length; j++){
+            if(nums[j] != nums[i]){
+                nums[++i] = nums[j];
+            }
+        }
+        for(int index = 0; index < nums.length; index++){
+            System.out.print(","+nums[index]);
+        }
+        return i+1;
+    }
+
 
 }
