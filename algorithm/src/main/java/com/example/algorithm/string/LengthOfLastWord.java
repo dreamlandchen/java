@@ -15,13 +15,47 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class LengthOfLastWord {
+    /**
+     * 58 / 58 个通过测试用例
+     * 状态：通过
+     * 执行用时: 0 ms
+     * 内存消耗: 36.5 MB
+     * @param s
+     * @return
+     */
     public int one(String s) {
-        if(s == null || s.length() == 0){
+        int end = s.length() -1;
+        while (end >= 0 && s.charAt(end) == ' '){
+            --end;
+        }
+        if(end < 0){
             return 0;
         }
+        int start = end;
+        while (start >= 0 && s.charAt(start) != ' ') {
+            --start;
+        }
+        return end - start;
+    }
 
-
-
-        return 0;
+    /**
+     * 58 / 58 个通过测试用例
+     * 状态：通过
+     * 执行用时: 0 ms
+     * 内存消耗: 36.7 MB
+     * @param s
+     * @return
+     */
+    public int two(String s){
+        if(s == null || s.length() == 0) return 0;
+        s = s.trim();
+        int len = 0;
+        for(int i = s.length() - 1; i >= 0; i--){
+            if(s.charAt(i) == ' '){
+                break;
+            }
+            ++len;
+        }
+        return len;
     }
 }
